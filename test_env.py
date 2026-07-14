@@ -2,18 +2,24 @@ from gym_environment.pricing_env import DynamicPricingEnv
 
 env = DynamicPricingEnv()
 
-obs, info = env.reset()
+state, info = env.reset()
 
-print("Initial Observation:", obs)
-print("Info:", info)
+print("Initial State:", state)
 
-obs, reward, terminated, truncated, info = env.step(1)
+done = False
 
-print("\nAfter Step")
-print("Observation:", obs)
-print("Reward:", reward)
-print("Terminated:", terminated)
-print("Truncated:", truncated)
-print("Info:", info)
+while not done:
+
+    action = env.action_space.sample()
+
+    state, reward, terminated, truncated, info = env.step(action)
+
+    print("----------------------------------")
+    print("Action:", action)
+    print("State:", state)
+    print("Reward:", reward)
+    print(info)
+
+    done = terminated or truncated
 
 env.close()
