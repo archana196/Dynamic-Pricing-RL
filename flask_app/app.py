@@ -1,15 +1,8 @@
-﻿from flask import Flask, render_template
+﻿from flask import Flask
+from routes import configure_routes
 
 app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/dashboard')
-def dashboard():
-    data = {'revenue': 125000, 'inventory': 340, 'recommended_price': 2499}
-    return render_template('dashboard.html', data=data)
+configure_routes(app)
 
 if __name__ == '__main__':
     app.run(debug=True)
