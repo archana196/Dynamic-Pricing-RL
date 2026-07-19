@@ -1,4 +1,5 @@
 from flask import render_template, jsonify
+import random
 
 def configure_routes(app):
 
@@ -29,18 +30,45 @@ def configure_routes(app):
         }
         return render_template('results.html', data=data)
 
-    # API routes for RL integration
+    @app.route('/comparison')
+    def comparison():
+        data = {
+            'qlearning': {
+                'avg_reward': 75.3,
+                'best_reward': 120.5,
+                'episodes': 1000,
+                'convergence': 'Episode 750'
+            },
+            'dqn': {
+                'avg_reward': 87.5,
+                'best_reward': 142.3,
+                'episodes': 1000,
+                'convergence': 'Episode 500'
+            }
+        }
+        return render_template('comparison.html', data=data)
+
     @app.route('/api/price', methods=['GET'])
     def get_price():
         return jsonify({
             'recommended_price': 2499,
             'inventory': 340,
-            'days_remaining': 15
+            'days_remaining': 15,
+            'source': 'placeholder'
         })
 
     @app.route('/api/revenue', methods=['GET'])
     def get_revenue():
         return jsonify({
             'total_revenue': 125000,
-            'avg_reward': 87.5
+            'avg_reward': 87.5,
+            'reward_history': [45, 62, 75, 83, 87.5]
+        })
+
+    @app.route('/api/compare', methods=['GET'])
+    def compare_models():
+        return jsonify({
+            'qlearning_reward': 75.3,
+            'dqn_reward': 87.5,
+            'winner': 'DQN'
         })
