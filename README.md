@@ -9,7 +9,6 @@ This project focuses on developing an **AI-powered Dynamic Pricing System** usin
 The solution aims to automate pricing decisions, improve occupancy rates, enhance revenue generation, and provide data-driven insights through an interactive Flask dashboard.
 
 ---
-
 # 🎓 Internship Details
 
 **Organization:** Infotact Solutions Pvt. Ltd.
@@ -20,36 +19,58 @@ The solution aims to automate pricing decisions, improve occupancy rates, enhanc
 
 **Duration:** 45 Days
 
-**Technology Stack:** Python, Reinforcement Learning, Gymnasium, Stable-Baselines3, Flask, Pandas, NumPy, Matplotlib
+**Technology Stack:** Python, Gymnasium, Stable-Baselines3, Flask, Pandas, NumPy, Matplotlib
 
 ---
 
-# 📅 Week 1 – Project Planning & Research
+# Project Planning & Environment Design
 
 ## Objective
 
-The first week focused on understanding the fundamentals of **dynamic pricing**, **reinforcement learning**, and planning the overall project architecture before implementation.
+The primary objective of Week 1 was to understand the fundamentals of Dynamic Pricing and Reinforcement Learning (RL), analyze real-world pricing factors, and design the overall project architecture. The focus was on planning a custom Gymnasium environment that could simulate pricing decisions, customer demand, and booking behavior for future DQN training.
 
-### Tasks Completed
+---
 
-- Studied the concept of dynamic pricing and its applications in the travel and hospitality industry.
-- Researched Reinforcement Learning fundamentals, including states, actions, rewards, and policies.
+## Tasks Completed
+
+- Studied the concepts of Dynamic Pricing and Reinforcement Learning.
 - Explored Q-Learning and Deep Q-Network (DQN) algorithms.
 - Reviewed the Gymnasium framework for creating custom RL environments.
-- Analyzed datasets and identified key features influencing pricing decisions, such as occupancy, demand, seasonality, and competitor pricing.
-- Designed the overall project workflow and folder structure.
-- Selected the technology stack and development tools.
-- Defined project objectives, expected outcomes, and evaluation metrics.
+- Designed the custom **DynamicPricingEnv** environment.
+- Defined the observation space using normalized state variables:
+  - Inventory Ratio
+  - Remaining Days Ratio
+  - Current Price Ratio
+  - Competitor Price Ratio
+  - Booking Probability
+  - Demand Level
+- Designed the action space:
+  - Decrease Price
+  - Keep Price
+  - Increase Price
+- Planned realistic customer demand simulation based on:
+  - Current Price
+  - Competitor Price
+  - Remaining Booking Days
+  - Market Randomness
+- Designed a reward shaping strategy to maximize long-term revenue while balancing customer bookings and inventory utilization.
+- Planned dynamic competitor pricing and booking simulation.
+- Finalized the project architecture, folder structure, and technology stack.
 
-### Deliverables
+---
 
-- Project requirement analysis
-- Literature and technology research
+## Deliverables
+
 - Project architecture design
-- Folder structure planning
-- Dataset exploration
-- Development roadmap for upcoming weeks
+- Custom Gymnasium environment planning
+- Observation space and action space design
+- Demand simulation strategy
+- Reward shaping strategy
+- Project folder structure
+- Development roadmap
 
-### Learning Outcomes
+---
 
-By the end of Week 1, a strong understanding of Reinforcement Learning concepts, dynamic pricing strategies, Gymnasium environments, and the complete project workflow was established, creating a solid foundation for the implementation phase in the following weeks.
+## Learning Outcomes
+
+By the end of Week 1, the project architecture and RL environment design were finalized. A strong understanding of Gymnasium, Dynamic Pricing, demand simulation, reward engineering, and DQN-based pricing strategies was established, creating a solid foundation for implementing the environment, training the RL agent, and integrating the Flask backend in the upcoming weeks.
