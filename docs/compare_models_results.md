@@ -80,9 +80,9 @@ The Deep Q-Network consistently outperformed all other strategies across every e
 
 | Rank | Strategy |
 |------|----------|
-| 🥇 1 | Deep Q-Network (DQN) |
-| 🥈 2 | Fixed Price |
-| 🥉 3 | Daily Discount |
+| 1 | Deep Q-Network (DQN) |
+| 2 | Fixed Price |
+| 3 | Daily Discount |
 | 4 | Q-Learning |
 
 ---
@@ -131,4 +131,4 @@ The CSV file contains the average performance of all evaluated pricing strategie
 
 ## Final Observation
 
-The evaluation confirms that **Deep Q-Network (DQN)** provides the most robust and profitable pricing strategy for the Dynamic Pricing Reinforcement Learning environment, making it the recommended model for deployment in intelligent revenue management systems.
+The project successfully establishes a custom Reinforcement Learning environment for Dynamic Pricing using Gymnasium. The environment integrates inventory management, dynamic pricing actions, competitor-aware demand simulation, and reward shaping, providing a solid foundation for training and evaluating Reinforcement Learning agents such as Q-Learning and Deep Q-Network (DQN). Future work will focus on training, evaluating, and comparing these models to identify the most effective pricing strategy.
