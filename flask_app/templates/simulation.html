@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Simulation{% endblock %}
+{% block content %}
+
+<h2>🎮 Run Simulation</h2>
+<button class="btn btn-warning" onclick="runSim()">▶️ Run Simulation</button>
+
+<div id="simResult" class="mt-4" style="display:none">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card bg-success text-white p-3 text-center">
+                <h5>💰 Revenue</h5>
+                <h2 id="revenue">-</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white p-3 text-center">
+                <h5>🎯 Reward</h5>
+                <h2 id="reward">-</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-white p-3 text-center">
+                <h5>🎫 Bookings</h5>
+                <h2 id="bookings">-</h2>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger text-white p-3 text-center">
+                <h5>📦 Inventory</h5>
+                <h2 id="inventory">-</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+function runSim() {
+    fetch('/run_simulation')
+    .then(r => r.json())
+    .then(data => {
+        document.getElementById('revenue').innerText = '₹' + data.revenue;
+        document.getElementById('reward').innerText = data.reward;
+        document.getElementById('bookings').innerText = data.bookings;
+        document.getElementById('inventory').innerText = data.inventory;
+        document.getElementById('simResult').style.display = 'block';
+    });
+}
+</script>
+{% endblock %}
