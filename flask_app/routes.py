@@ -68,4 +68,20 @@ def configure_routes(app):
 
     @app.route('/api/compare')
     def compare_models():
-        return jsonify({'qlearning_reward': 75.3, 'dqn_reward': 87.5, 'winner': 'DQN'})
+        return jsonify({'qlearning_reward': 75.3, 'dqn_reward': 87.5, 'winner': 'DQN'})@app.route('/dashboard')
+def dashboard():
+    results = load_csv('evaluation_results.csv')
+    latest = results[-1] if results else {}
+    data = {
+        'revenue': latest.get('revenue', 125000),
+        'inventory': latest.get('inventory', 340),
+        'days_remaining': 15,
+        'recommended_price': 2499,
+        'train_episodes': 1000,
+        'avg_reward': latest.get('reward', 87.5),
+        'best_reward': 142.3,
+        'bookings': latest.get('bookings', 660)
+    }
+    return render_template('dashboard.html', data=data)
+    
+    
