@@ -1,26 +1,61 @@
 from gym_environment.pricing_env import DynamicPricingEnv
 
-env = DynamicPricingEnv()
 
-obs, info = env.reset()
+def main():
+    env = DynamicPricingEnv()
 
-print("Initial Observation")
-print(obs)
+    obs, info = env.reset()
 
-done = False
+    print("=" * 60)
+    print("Dynamic Pricing Environment Test")
+    print("=" * 60)
 
-while not done:
+    print("\nInitial Observation:")
+    print(obs)
 
-    action = env.action_space.sample()
+    episode_reward = 0
+    step = 0
 
-    obs, reward, terminated, truncated, info = env.step(action)
+    done = False
 
-    env.render()
+    while not done:
+        step += 1
 
-    print("Action :", action)
-    print("Reward :", reward)
-    print("State  :", obs)
+        # Random action (0 = Decrease, 1 = Keep, 2 = Increase)
+        action = env.action_space.sample()
 
-    done = terminated or truncated
+        obs, reward, terminated, truncated, info = env.step(action)
 
-env.close()
+        episode_reward += reward
+
+        print("\n" + "=" * 60)
+        print(f"Step: {step}")
+        print("=" * 60)
+
+        print(f"Action              : {action}")
+        print(f"Reward              : {reward:.2f}")
+        print(f"Total Reward        : {episode_reward:.2f}")
+
+        print("\nObservation:")
+        print(obs)
+
+        print("\nEnvironment Info:")
+        for key, value in info.items():
+            print(f"{key:20}: {value}")
+
+        print("\nCurrent Environment State:")
+        env.render()
+
+        done = terminated or truncated
+
+    print("\n" + "=" * 60)
+    print("Episode Finished")
+    print("=" * 60)
+    print(f"Total Steps         : {step}")
+    print(f"Total Reward        : {episode_reward:.2f}")
+
+    env.close()
+
+
+if __name__ == "__main__":
+    main()
