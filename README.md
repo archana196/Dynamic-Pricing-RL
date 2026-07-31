@@ -1,5 +1,6 @@
 # 🚀 Dynamic Pricing using Reinforcement Learning (RL)
 
+
 ## 📌 Overview
 
 Dynamic Pricing is a revenue optimization strategy where product or service prices are adjusted based on market conditions such as customer demand, competitor pricing, inventory, and booking windows.
