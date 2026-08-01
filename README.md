@@ -120,53 +120,6 @@ Next State
         ↓
 Episode Ends
 ```
-
----
-
-## 📈 Current Progress
-
-| Module | Status |
-|---------|--------|
-| Project Planning | ✅ |
-| Gymnasium Environment | ✅ |
-| Demand Simulation | ✅ |
-| Reward Engineering | ✅ |
-| Environment Testing | ✅ |
-| Documentation | ✅ |
-| Model Comparison | ✅ |
-| Flask Backend | 🚧 |
-| DQN Training | ⏳ |
-
----
-
-## ▶️ Installation
-
-```bash
-git clone https://github.com/<your-username>/Dynamic-Pricing-RL.git
-
-cd Dynamic-Pricing-RL
-
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Run
-
-Environment Test
-
-```bash
-python test_env.py
-```
-
-Flask Backend
-
-```bash
-python app.py
-```
-
----
-
 ## 📚 Documentation
 
 Detailed documentation is available in the **docs/** folder.
