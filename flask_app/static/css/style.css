@@ -234,12 +234,15 @@ div.bg-dark.text-white.rounded::after {
     background-size: 34px 34px;
     -webkit-mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.5));
     mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.5));
+    pointer-events: none;   /* let clicks pass through to the buttons below */
+    z-index: 0;
 }
 div.bg-dark.text-white.rounded h1 {
     font-family: 'Lexend', sans-serif;
     font-weight: 800;
     letter-spacing: -1px;
     position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -247,6 +250,11 @@ div.bg-dark.text-white.rounded h1 {
 div.bg-dark.text-white.rounded .lead {
     color: rgba(255,255,255,0.72) !important;
     position: relative;
+    z-index: 1;
+}
+div.bg-dark.text-white.rounded .btn {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== HEADINGS ===== */
