@@ -1,58 +1,75 @@
 # 🚀 Dynamic Pricing using Reinforcement Learning (RL)
 
-
-## 📌 Overview
-
-Dynamic Pricing is a revenue optimization strategy where product or service prices are adjusted based on market conditions such as customer demand, competitor pricing, inventory, and booking windows.
-
-This project implements a **custom Reinforcement Learning environment** using **Gymnasium** for dynamic pricing in the travel and hospitality domain. The environment simulates customer booking behavior, competitor pricing, inventory management, and reward optimization, providing a foundation for training Reinforcement Learning agents such as **Q-Learning** and **Deep Q-Network (DQN)**.
+A custom **Gymnasium-based Reinforcement Learning environment** for Dynamic Pricing in the **Travel & Hospitality** domain. The project simulates customer demand, competitor pricing, inventory management, and reward optimization to provide a foundation for training intelligent pricing agents such as **Q-Learning** and **Deep Q-Network (DQN)**.
 
 ---
 
-# 🎓 Internship Details
+## 🎓 Internship Details
 
-**Organization:** Infotact Solutions Pvt. Ltd.
-
-**Internship Domain:** Artificial Intelligence & Machine Learning
-
-**Project Title:** Dynamic Pricing using Reinforcement Learning
-
-**Duration:** 45 Days
+| Field | Details |
+|-------|---------|
+| Organization | Infotact Solutions Pvt. Ltd. |
+| Domain | Artificial Intelligence & Machine Learning |
+| Duration | **60 Days** |
+| Project | Dynamic Pricing using Reinforcement Learning |
 
 ---
 
-# 🛠️ Technology Stack
+## 👥 Team Members
+
+- **Ajay Verma** – Gymnasium Environment, Testing & Documentation
+- **Archana** – Project Lead & RL Model Integration
+- **Abhay** – Frontend & Flask Backend
+
+---
+
+## ✨ Features
+
+- Custom Gymnasium Environment
+- Dynamic Pricing Simulation
+- Observation & Action Space
+- Demand Simulation
+- Reward Engineering
+- Dynamic Competitor Pricing
+- Inventory Management
+- Revenue Tracking
+- Environment Testing
+- Model Comparison Framework
+- Flask Backend (In Progress)
+
+---
+
+## 🛠️ Tech Stack
 
 - Python
 - Gymnasium
 - NumPy
 - Pandas
 - Flask
-- Stable-Baselines3 (Planned)
 - Matplotlib
+- Stable-Baselines3 *(Planned)*
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-```
+```text
 Dynamic-Pricing-RL/
-│
+
 ├── docs/
-│   └── compare_models_results.md
-│
 ├── gym_environment/
-│   ├── __init__.py
 │   ├── pricing_env.py
 │   ├── demand.py
-│   └── reward.py
-│
-├── rl_agent/
-│
-├── saved_models/
+│   ├── reward.py
+│   └── __init__.py
 │
 ├── results/
+├── rl_agent/
+├── saved_models/
+├── static/
+├── templates/
 │
+├── app.py
 ├── compare_models.py
 ├── test_env.py
 ├── requirements.txt
@@ -61,45 +78,18 @@ Dynamic-Pricing-RL/
 
 ---
 
-# ✅ Completed Work
+## 🏗️ Environment Design
 
-## 1. Custom Gymnasium Environment
+### Observation Space
 
-A custom environment named **DynamicPricingEnv** has been implemented using the Gymnasium framework.
+- Inventory Ratio
+- Remaining Days Ratio
+- Current Price Ratio
+- Competitor Price Ratio
+- Booking Probability
+- Demand Level
 
-### Features
-
-- Configurable inventory
-- Configurable booking window
-- Configurable pricing limits
-- Dynamic competitor pricing
-- Inventory tracking
-- Booking tracking
-- Revenue calculation
-- Episode termination
-- Environment reset
-- Environment rendering
-
----
-
-## 2. Observation Space
-
-The environment uses six normalized state variables.
-
-| State | Description |
-|--------|-------------|
-| Inventory Ratio | Remaining inventory |
-| Remaining Days Ratio | Remaining booking window |
-| Current Price Ratio | Current selling price |
-| Competitor Price Ratio | Competitor pricing |
-| Booking Probability | Estimated booking probability |
-| Demand Level | Current market demand |
-
----
-
-## 3. Action Space
-
-The RL agent can perform three pricing actions.
+### Action Space
 
 | Action | Description |
 |--------|-------------|
@@ -109,161 +99,104 @@ The RL agent can perform three pricing actions.
 
 ---
 
-## 4. Demand Simulation
+## 🔄 Workflow
 
-A stochastic demand simulator has been implemented.
-
-The booking probability depends on:
-
-- Current Price
-- Competitor Price
-- Remaining Booking Days
-- Market Randomness
-
-The simulator returns:
-
-- Booking Decision
-- Booking Probability
-
----
-
-## 5. Reward Function
-
-A custom reward function has been implemented to encourage long-term revenue optimization.
-
-The reward considers:
-
-- Revenue generated
-- Successful bookings
-- Inventory utilization
-- Remaining booking days
-- High-price penalties
-- Unsold inventory penalties
-
-Reward shaping helps guide the RL agent toward balanced pricing decisions instead of simply maximizing price.
-
----
-
-## 6. Environment Testing
-
-The custom environment has been tested using a standalone testing script.
-
-The following components were verified:
-
-- Environment reset
-- Observation generation
-- State transitions
-- Price updates
-- Booking simulation
-- Revenue calculation
-- Reward calculation
-- Episode termination
-
----
-
-## 7. Model Comparison
-
-A comparison framework has been added for evaluating different pricing strategies.
-
-Current comparison includes:
-
-- Fixed Price
-- Daily Discount
-- Q-Learning (Framework)
-- DQN (Framework)
-
-Comparison results are stored separately inside the **docs** directory.
-
----
-
-## 8. Flask Backend
-
-Basic Flask backend development has been initiated.
-
-Current progress includes:
-
-- Flask application structure
-- Route planning
-- Backend API planning
-
----
-
-# 📊 Reinforcement Learning Workflow
-
-```
+```text
 Reset Environment
-
-↓
-
-Observe Current State
-
-↓
-
-RL Agent Selects Action
-
-↓
-
+        ↓
+Observe State
+        ↓
+Select Action
+        ↓
 Update Price
-
-↓
-
+        ↓
 Demand Simulation
-
-↓
-
+        ↓
 Booking Decision
-
-↓
-
-Revenue Calculation
-
-↓
-
+        ↓
 Reward Calculation
-
-↓
-
+        ↓
 Next State
-
-↓
-
+        ↓
 Episode Ends
 ```
 
 ---
 
-# 📈 Current Project Status
+## 📈 Current Progress
 
 | Module | Status |
 |---------|--------|
-| Project Planning | ✅ Completed |
-| Gymnasium Environment | ✅ Completed |
-| Demand Simulation | ✅ Completed |
-| Reward Engineering | ✅ Completed |
-| Environment Testing | ✅ Completed |
-| Model Comparison Framework | ✅ Completed |
-| Flask Backend Structure | ✅ In Progress |
-| DQN Training | 🔄 Pending |
-| Dashboard Development | 🔄 Pending |
+| Project Planning | ✅ |
+| Gymnasium Environment | ✅ |
+| Demand Simulation | ✅ |
+| Reward Engineering | ✅ |
+| Environment Testing | ✅ |
+| Documentation | ✅ |
+| Model Comparison | ✅ |
+| Flask Backend | 🚧 |
+| DQN Training | ⏳ |
 
 ---
 
-# 🚀 Future Work
+## ▶️ Installation
 
-- Train Q-Learning agent
+```bash
+git clone https://github.com/<your-username>/Dynamic-Pricing-RL.git
+
+cd Dynamic-Pricing-RL
+
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Run
+
+Environment Test
+
+```bash
+python test_env.py
+```
+
+Flask Backend
+
+```bash
+python app.py
+```
+
+---
+
+## 📚 Documentation
+
+Detailed documentation is available in the **docs/** folder.
+
+- Project Documentation
+- Environment Test Report
+- Model Comparison Results
+- Implementation Summary
+
+---
+
+## 🚀 Future Work
+
+- Train Q-Learning Agent
 - Train Deep Q-Network (DQN)
-- Hyperparameter tuning
-- Performance evaluation
-- Interactive Flask dashboard
-- Visualization of pricing strategies
+- Hyperparameter Tuning
+- Interactive Flask Dashboard
+- Performance Evaluation
 - Deployment
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Ajay Verma**
 
 Artificial Intelligence & Machine Learning Intern
 
-Infotact Solutions Pvt. Ltd.
+**Infotact Solutions Pvt. Ltd.**
+
+---
+
+⭐ If you found this project useful, consider giving it a **Star** on GitHub.
