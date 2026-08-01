@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def load_csv(filename):
     data = []
-    filepath = os.path.join('data', filename)
+    filepath = os.path.join('results', filename)
     if os.path.exists(filepath):
         with open(filepath, 'r') as f:
             reader = csv.DictReader(f)
@@ -26,7 +26,7 @@ def dashboard():
         'revenue': latest.get('revenue', 125000),
         'inventory': latest.get('inventory', 340),
         'days_remaining': 15,
-        'recommended_price': 2499,
+        'recommended_price': latest.get('price', 2499),
         'avg_reward': latest.get('reward', 87.5),
         'best_reward': 142.3,
         'bookings': latest.get('bookings', 660)
@@ -40,6 +40,7 @@ def simulation():
 
 @app.route('/comparison')
 def comparison():
+    comparison = load_csv('model_comparison.csv')
     return render_template('comparison.html', data={
         'qlearning': {'avg_reward': 75.3, 'best_reward': 120.5, 'episodes': 1000, 'convergence': 'Episode 750'},
         'dqn': {'avg_reward': 87.5, 'best_reward': 142.3, 'episodes': 1000, 'convergence': 'Episode 500'}
@@ -48,7 +49,8 @@ def comparison():
 @app.route('/graphs')
 def graphs():
     results = load_csv('evaluation_results.csv')
-    return render_template('graphs.html', results=results)
+    prices = load_csv('price_trajectory.csv')
+    return render_template('graphs.html', results=results, prices=prices)
 
 @app.route('/results')
 def results():
@@ -68,15 +70,30 @@ def run_simulation():
 
 @app.route('/api/price')
 def get_price():
-    return jsonify({'recommended_price': 2499, 'inventory': 340, 'days_remaining': 15})
+    prices = load_csv('price_trajectory.csv')
+    latest = prices[-1] if prices else {}
+    return jsonify({
+        'recommended_price': latest.get('price', 2499),
+        'inventory': 340,
+        'days_remaining': 15
+    })
 
 @app.route('/api/revenue')
 def get_revenue():
-    return jsonify({'total_revenue': 125000, 'avg_reward': 87.5})
+    results = load_csv('evaluation_results.csv')
+    latest = results[-1] if results else {}
+    return jsonify({
+        'total_revenue': latest.get('revenue', 125000),
+        'avg_reward': latest.get('reward', 87.5)
+    })
 
 @app.route('/api/compare')
 def compare_models():
-    return jsonify({'qlearning_reward': 75.3, 'dqn_reward': 87.5, 'winner': 'DQN'})
+    comparison = load_csv('model_comparison.csv')
+    return jsonify({
+        'data': comparison,
+        'winner': 'DQN'
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
