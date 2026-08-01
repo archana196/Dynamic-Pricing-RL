@@ -2,33 +2,39 @@
 {% block title %}Simulation{% endblock %}
 {% block content %}
 
-<h2>🎮 Run Simulation</h2>
-<button class="btn btn-warning" onclick="runSim()">▶️ Run Simulation</button>
+<h2><span class="icon-badge">🎮</span> Run Simulation</h2>
+<button class="btn btn-warning btn-lg" onclick="runSim()">▶️ Run Simulation</button>
 
 <div id="simResult" class="mt-4" style="display:none">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card bg-success text-white p-3 text-center">
-                <h5>💰 Revenue</h5>
-                <h2 id="revenue">-</h2>
+    <div class="card stats-panel shadow">
+        <div class="stat-item">
+            <div class="stat-icon success">💰</div>
+            <div>
+                <div class="stat-label">Revenue</div>
+                <div class="stat-value" id="revenue">-</div>
+                <div class="spark"></div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-primary text-white p-3 text-center">
-                <h5>🎯 Reward</h5>
-                <h2 id="reward">-</h2>
+        <div class="stat-item">
+            <div class="stat-icon primary">🎯</div>
+            <div>
+                <div class="stat-label">Reward</div>
+                <div class="stat-value" id="reward">-</div>
+                <div class="spark"></div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-warning text-white p-3 text-center">
-                <h5>🎫 Bookings</h5>
-                <h2 id="bookings">-</h2>
+        <div class="stat-item">
+            <div class="stat-icon warning">🎫</div>
+            <div>
+                <div class="stat-label">Bookings</div>
+                <div class="stat-value" id="bookings">-</div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card bg-danger text-white p-3 text-center">
-                <h5>📦 Inventory</h5>
-                <h2 id="inventory">-</h2>
+        <div class="stat-item">
+            <div class="stat-icon danger">📦</div>
+            <div>
+                <div class="stat-label">Inventory</div>
+                <div class="stat-value" id="inventory">-</div>
             </div>
         </div>
     </div>

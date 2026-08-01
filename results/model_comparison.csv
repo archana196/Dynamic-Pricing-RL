@@ -1,0 +1,5 @@
+Strategy,Revenue,Reward,Bookings
+Fixed Price,104225.0,849.045,20.845
+Daily Discount,94872.0,831.32,21.604
+Q-Learning,96068.5,907.4485,23.97
+DQN,108231.5,1067.8775,27.268

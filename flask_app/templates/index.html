@@ -6,53 +6,53 @@
 
 <!-- Hero -->
 <div class="text-center py-5 bg-dark text-white rounded mb-4">
-    <h1>🤖 Dynamic Pricing RL</h1>
+    <h1><span class="icon-badge lg">🤖</span> Dynamic Pricing RL</h1>
     <p class="lead">AI-Powered Revenue Optimization using Reinforcement Learning</p>
     <a href="/simulation" class="btn btn-warning btn-lg me-2">🎮 Run Simulation</a>
     <a href="/comparison" class="btn btn-outline-light btn-lg">⚔️ Compare Models</a>
 </div>
 
-<!-- Dashboard Cards -->
+<!-- Dashboard Overview — one unified panel instead of 4 separate boxes -->
 <h3 class="mb-3">📊 Dashboard Overview</h3>
-<div class="row g-4">
+<div class="card stats-panel shadow">
 
-    <div class="col-md-3">
-        <div class="card text-white bg-success shadow h-100">
-            <div class="card-body text-center">
-                <h5>💰 Total Revenue</h5>
-                <h2>₹1,25,000</h2>
-                <p class="mb-0">Optimized earnings</p>
-            </div>
+    <div class="stat-item">
+        <div class="stat-icon success">💰</div>
+        <div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value">₹1,25,000</div>
+            <div class="stat-caption">Optimized earnings</div>
+            <div class="spark"></div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-primary shadow h-100">
-            <div class="card-body text-center">
-                <h5>🎯 Total Reward</h5>
-                <h2>87.5</h2>
-                <p class="mb-0">Avg RL reward</p>
-            </div>
+    <div class="stat-item">
+        <div class="stat-icon primary">🎯</div>
+        <div>
+            <div class="stat-label">Total Reward</div>
+            <div class="stat-value">87.5</div>
+            <div class="stat-caption">Avg RL reward</div>
+            <div class="spark"></div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-warning shadow h-100">
-            <div class="card-body text-center">
-                <h5>🎫 Total Bookings</h5>
-                <h2>660</h2>
-                <p class="mb-0">Confirmed bookings</p>
-            </div>
+    <div class="stat-item">
+        <div class="stat-icon warning">🎫</div>
+        <div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value">660</div>
+            <div class="stat-caption">Confirmed bookings</div>
+            <div class="spark"></div>
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-danger shadow h-100">
-            <div class="card-body text-center">
-                <h5>📦 Inventory Left</h5>
-                <h2>340</h2>
-                <p class="mb-0">Rooms available</p>
-            </div>
+    <div class="stat-item">
+        <div class="stat-icon danger">📦</div>
+        <div>
+            <div class="stat-label">Inventory Left</div>
+            <div class="stat-value">340</div>
+            <div class="stat-caption">Rooms available</div>
+            <div class="spark"></div>
         </div>
     </div>
 
@@ -62,14 +62,14 @@
 <div class="row mt-4">
     <div class="col-md-6">
         <div class="card shadow p-4">
-            <h5>🧠 Q-Learning</h5>
+            <h5><span class="icon-badge">🧠</span> Q-Learning</h5>
             <p>Traditional tabular RL approach for dynamic pricing.</p>
             <span class="badge bg-primary">Avg Reward: 75.3</span>
         </div>
     </div>
     <div class="col-md-6">
         <div class="card shadow p-4">
-            <h5>🤖 DQN</h5>
+            <h5><span class="icon-badge">🤖</span> DQN</h5>
             <p>Deep Q-Network with neural network for better pricing.</p>
             <span class="badge bg-success">Avg Reward: 87.5</span>
         </div>
