@@ -1,155 +1,194 @@
-# 🚀 Dynamic Pricing using Reinforcement Learning (RL)
+# Dynamic Pricing using Reinforcement Learning
 
-A custom **Gymnasium-based Reinforcement Learning environment** for Dynamic Pricing in the **Travel & Hospitality** domain. The project simulates customer demand, competitor pricing, inventory management, and reward optimization to provide a foundation for training intelligent pricing agents such as **Q-Learning** and **Deep Q-Network (DQN)**.
+## Project Overview
 
----
+Dynamic pricing is a strategy used in industries such as airlines, hotels, and online booking platforms to maximize revenue by adjusting prices based on changing market conditions. Traditional fixed-price methods cannot effectively respond to variations in customer demand, remaining inventory, or booking time.
 
-## 🎓 Internship Details
-
-| Field | Details |
-|-------|---------|
-| Organization | Infotact Solutions Pvt. Ltd. |
-| Domain | Artificial Intelligence & Machine Learning |
-| Duration | **60 Days** |
-| Project | Dynamic Pricing using Reinforcement Learning |
+This project implements a Reinforcement Learning (RL) based Dynamic Pricing System that learns optimal pricing strategies through interaction with a simulated booking environment. The agent aims to maximize total revenue while minimizing unsold inventory.
 
 ---
 
-## 👥 Team Members
+# Objectives
 
-- **Ajay Verma** – Gymnasium Environment, Testing & Documentation
-- **Archana** – Project Lead & RL Model Integration
-- **Abhay** – Frontend & Flask Backend
-
----
-
-## ✨ Features
-
-- Custom Gymnasium Environment
-- Dynamic Pricing Simulation
-- Observation & Action Space
-- Demand Simulation
-- Reward Engineering
-- Dynamic Competitor Pricing
-- Inventory Management
-- Revenue Tracking
-- Environment Testing
-- Model Comparison Framework
-- Flask Backend (In Progress)
+* Develop a custom Gymnasium environment for hotel/airline booking simulation.
+* Implement Q-Learning as the baseline reinforcement learning algorithm.
+* Implement a Deep Q-Network (DQN) for improved decision-making.
+* Compare DQN with traditional pricing strategies.
+* Evaluate the trained models over multiple simulated booking seasons.
+* Visualize model performance using graphs and analytics.
 
 ---
 
-## 🛠️ Tech Stack
+# Features
 
-- Python
-- Gymnasium
-- NumPy
-- Pandas
-- Flask
-- Matplotlib
-- Stable-Baselines3 *(Planned)*
+* Custom Gymnasium environment
+* Dynamic pricing simulation
+* Q-Learning implementation
+* Deep Q-Network (DQN)
+* Experience Replay Buffer
+* Epsilon-Greedy Exploration
+* Automated model evaluation
+* Performance comparison with baseline strategies
+* CSV result generation
+* Performance visualization
+* Flask-based dashboard integration
 
 ---
 
-## 📂 Project Structure
+# Project Structure
 
 ```text
 Dynamic-Pricing-RL/
-
-├── docs/
-├── gym_environment/
-│   ├── pricing_env.py
-│   ├── demand.py
-│   ├── reward.py
-│   └── __init__.py
 │
-├── results/
+├── gym_environment/
 ├── rl_agent/
 ├── saved_models/
-├── static/
+├── results/
+├── graphs/
 ├── templates/
+├── static/
+├── docs/
 │
-├── app.py
 ├── compare_models.py
-├── test_env.py
+├── app.py
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🏗️ Environment Design
+# Technologies Used
 
-### Observation Space
-
-- Inventory Ratio
-- Remaining Days Ratio
-- Current Price Ratio
-- Competitor Price Ratio
-- Booking Probability
-- Demand Level
-
-### Action Space
-
-| Action | Description |
-|--------|-------------|
-| 0 | Decrease Price |
-| 1 | Keep Price |
-| 2 | Increase Price |
+* Python
+* Gymnasium
+* PyTorch
+* NumPy
+* Pandas
+* Matplotlib
+* Flask
+* Git & GitHub
 
 ---
 
-## 🔄 Workflow
+# Reinforcement Learning Workflow
+
+1. Initialize the booking environment.
+2. Observe the current state.
+3. Select a pricing action using the RL agent.
+4. Simulate customer demand.
+5. Calculate reward based on revenue.
+6. Update the learning model.
+7. Repeat for multiple booking seasons.
+8. Evaluate performance and generate analytics.
+
+---
+
+# State Space
+
+The RL agent considers the following information:
+
+* Remaining Inventory
+* Remaining Days
+* Current Price
+* Competitor Price
+* Demand Level
+* Booking Probability
+
+---
+
+# Action Space
+
+The agent can perform three pricing actions:
+
+* Decrease Price
+* Keep Price
+* Increase Price
+
+---
+
+# Reward Function
+
+The reward is based on revenue generated during the booking process. The RL agent learns to maximize cumulative reward while ensuring efficient inventory utilization.
+
+---
+
+# Model Comparison
+
+The project compares the following pricing strategies:
+
+* Fixed Price
+* Daily Discount
+* Q-Learning
+* Deep Q-Network (DQN)
+
+The comparison results are stored in:
 
 ```text
-Reset Environment
-        ↓
-Observe State
-        ↓
-Select Action
-        ↓
-Update Price
-        ↓
-Demand Simulation
-        ↓
-Booking Decision
-        ↓
-Reward Calculation
-        ↓
-Next State
-        ↓
-Episode Ends
+results/model_comparison.csv
 ```
-## 📚 Documentation
-
-Detailed documentation is available in the **docs/** folder.
-
-- Project Documentation
-- Environment Test Report
-- Model Comparison Results
-- Implementation Summary
 
 ---
 
-## 🚀 Future Work
+# Evaluation
 
-- Train Q-Learning Agent
-- Train Deep Q-Network (DQN)
-- Hyperparameter Tuning
-- Interactive Flask Dashboard
-- Performance Evaluation
-- Deployment
+The trained DQN model is evaluated over 1000 simulated booking seasons.
 
----
+The following metrics are collected:
 
-## 👨‍💻 Author
+* Average Revenue
+* Average Reward
+* Average Bookings
+* Average Remaining Inventory
 
-**Ajay Verma**
+Results are stored in:
 
-Artificial Intelligence & Machine Learning Intern
-
-**Infotact Solutions Pvt. Ltd.**
+```text
+results/evaluation_results.csv
+```
 
 ---
 
-⭐ If you found this project useful, consider giving it a **Star** on GitHub.
+# Generated Outputs
+
+## Saved Models
+
+* `saved_models/q_table.npy`
+* `saved_models/dqn_model.pth`
+
+## Result Files
+
+* `evaluation_results.csv`
+* `model_comparison.csv`
+* `price_trajectory.csv`
+
+## Graphs
+
+* Revenue vs Episode
+* Reward vs Episode
+* Bookings vs Episode
+* Remaining Inventory vs Episode
+
+---
+
+# Team Members
+
+* **Archana** – RL Evaluation, Analytics, Integration & Testing
+* **Ajay** – Model Comparison & Reinforcement Learning Verification
+* **Abhay** – Flask Backend, Dashboard Development & Frontend Integration
+
+---
+
+# Future Scope
+
+* Real-time booking data integration
+* Live competitor pricing
+* Advanced RL algorithms (e.g., PPO)
+* Cloud deployment
+* Multi-hotel pricing optimization
+* Real-time business dashboard
+
+---
+
+# Conclusion
+
+This project demonstrates how Reinforcement Learning can be applied to solve real-world dynamic pricing problems. By learning from continuous interaction with a simulated booking environment, the DQN agent can make intelligent pricing decisions that improve revenue compared to traditional pricing strategies.
