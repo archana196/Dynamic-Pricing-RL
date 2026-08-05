@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h2><span class="icon-badge">📊</span> Main Dashboard</h2>
+
+<div class="card stats-panel shadow mt-4">
+    <div class="stat-item">
+        <div class="stat-icon success">💰</div>
+        <div>
+            <div class="stat-label">Revenue</div>
+            <div class="stat-value">₹{{ data.revenue }}</div>
+            <div class="spark"></div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon primary">📦</div>
+        <div>
+            <div class="stat-label">Inventory</div>
+            <div class="stat-value">{{ data.inventory }}</div>
+            <div class="stat-caption">{{ data.days_remaining }} days left</div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon warning">🏷️</div>
+        <div>
+            <div class="stat-label">Price</div>
+            <div class="stat-value">₹{{ data.recommended_price }}</div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon danger">🎯</div>
+        <div>
+            <div class="stat-label">Avg Reward</div>
+            <div class="stat-value">{{ data.avg_reward }}</div>
+            <div class="spark"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow p-3">
+            <h5><span class="icon-badge">📈</span> Revenue Trend</h5>
+            <canvas id="revenueChart"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow p-3">
+            <h5><span class="icon-badge">🎯</span> Reward History</h5>
+            <canvas id="rewardChart"></canvas>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+// Light-theme defaults so Chart.js text/grid lines are visible on the white panel
+Chart.defaults.color = '#4b5468';
+Chart.defaults.borderColor = 'rgba(18,21,31,0.08)';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+new Chart(document.getElementById('revenueChart'), {
+    type: 'line',
+    data: {
+        labels: ['Day 1','Day 2','Day 3','Day 4','Day 5'],
+        datasets: [{
+            label: 'Revenue',
+            data: [80000, 95000, 110000, 125000, 138000],
+            borderColor: '#157a52',
+            backgroundColor: 'rgba(21,122,82,0.12)',
+            fill: true,
+            tension: 0.35,
+            pointBackgroundColor: '#157a52'
+        }]
+    },
+    options: { plugins: { legend: { labels: { color: '#12151f' } } } }
+});
+
+new Chart(document.getElementById('rewardChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Ep 200','Ep 400','Ep 600','Ep 800','Ep 1000'],
+        datasets: [{
+            label: 'Reward',
+            data: [45, 62, 75, 83, 87.5],
+            backgroundColor: '#1e2a5e',
+            borderRadius: 6
+        }]
+    },
+    options: { plugins: { legend: { labels: { color: '#12151f' } } } }
+});
+</script>
+{% endblock %}

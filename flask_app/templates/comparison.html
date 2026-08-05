@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Comparison - Dynamic Pricing RL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/"><span class="icon-badge">🤖</span> Dynamic Pricing RL</a>
+            <a href="/dashboard" class="btn btn-outline-light">Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2><span class="icon-badge">⚔️</span> Model Comparison: Q-Learning vs DQN</h2>
+        <p class="text-muted">Performance comparison of both RL models</p>
+
+        <!-- Comparison Cards — click a card to expand/collapse full details -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card shadow p-4 border-primary card-expandable" onclick="this.classList.toggle('expanded')">
+                    <h4 class="text-primary"><span class="icon-badge">🧠</span> Q-Learning</h4>
+                    <hr>
+                    <div class="expandable-content">
+                        <p><b>Avg Reward:</b> {{ data.qlearning.avg_reward }}</p>
+                        <p><b>Best Reward:</b> {{ data.qlearning.best_reward }}</p>
+                        <p><b>Episodes:</b> {{ data.qlearning.episodes }}</p>
+                        <p><b>Convergence:</b> {{ data.qlearning.convergence }}</p>
+                    </div>
+                    <div class="expand-toggle"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow p-4 border-success card-expandable" onclick="this.classList.toggle('expanded')">
+                    <h4 class="text-success"><span class="icon-badge">🤖</span> DQN</h4>
+                    <hr>
+                    <div class="expandable-content">
+                        <p><b>Avg Reward:</b> {{ data.dqn.avg_reward }}</p>
+                        <p><b>Best Reward:</b> {{ data.dqn.best_reward }}</p>
+                        <p><b>Episodes:</b> {{ data.dqn.episodes }}</p>
+                        <p><b>Convergence:</b> {{ data.dqn.convergence }}</p>
+                    </div>
+                    <div class="expand-toggle"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winner Banner -->
+        <div class="alert alert-success mt-4 text-center">
+            <h4><span class="icon-badge">🏆</span> Winner: DQN performs better with higher avg reward!</h4>
+        </div>
+
+        <!-- Comparison Chart -->
+        <div class="card shadow p-4 mt-4">
+            <h5><span class="icon-badge">📊</span> Performance Comparison Chart</h5>
+            <canvas id="comparisonChart"></canvas>
+        </div>
+
+        <!-- Reward History Chart -->
+        <div class="card shadow p-4 mt-4">
+            <h5><span class="icon-badge">📈</span> Reward History</h5>
+            <canvas id="rewardChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Light-theme defaults so Chart.js text/grid lines are visible on the white panel
+        Chart.defaults.color = '#4b5468';
+        Chart.defaults.borderColor = 'rgba(18,21,31,0.08)';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Avg Reward', 'Best Reward'],
+                datasets: [
+                    {
+                        label: 'Q-Learning',
+                        data: [75.3, 120.5],
+                        backgroundColor: '#1e2a5e',
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'DQN',
+                        data: [87.5, 142.3],
+                        backgroundColor: '#157a52',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: { plugins: { legend: { labels: { color: '#12151f' } } } }
+        });
+
+        // Reward History
+        new Chart(document.getElementById('rewardChart'), {
+            type: 'line',
+            data: {
+                labels: ['Ep 200','Ep 400','Ep 600','Ep 800','Ep 1000'],
+                datasets: [
+                    {
+                        label: 'Q-Learning',
+                        data: [35, 52, 63, 71, 75.3],
+                        borderColor: '#1e2a5e',
+                        backgroundColor: 'rgba(30,42,94,0.10)',
+                        fill: true,
+                        tension: 0.35
+                    },
+                    {
+                        label: 'DQN',
+                        data: [45, 62, 75, 83, 87.5],
+                        borderColor: '#157a52',
+                        backgroundColor: 'rgba(21,122,82,0.10)',
+                        fill: true,
+                        tension: 0.35
+                    }
+                ]
+            },
+            options: { plugins: { legend: { labels: { color: '#12151f' } } } }
+        });
+    </script>
+</body>
+</html>

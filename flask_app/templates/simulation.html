@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Simulation{% endblock %}
+{% block content %}
+
+<h2><span class="icon-badge">🎮</span> Run Simulation</h2>
+<button class="btn btn-warning btn-lg" onclick="runSim()">▶️ Run Simulation</button>
+
+<div id="simResult" class="mt-4" style="display:none">
+    <div class="card stats-panel shadow">
+        <div class="stat-item">
+            <div class="stat-icon success">💰</div>
+            <div>
+                <div class="stat-label">Revenue</div>
+                <div class="stat-value" id="revenue">-</div>
+                <div class="spark"></div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon primary">🎯</div>
+            <div>
+                <div class="stat-label">Reward</div>
+                <div class="stat-value" id="reward">-</div>
+                <div class="spark"></div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon warning">🎫</div>
+            <div>
+                <div class="stat-label">Bookings</div>
+                <div class="stat-value" id="bookings">-</div>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon danger">📦</div>
+            <div>
+                <div class="stat-label">Inventory</div>
+                <div class="stat-value" id="inventory">-</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+function runSim() {
+    fetch('/run_simulation')
+    .then(r => r.json())
+    .then(data => {
+        document.getElementById('revenue').innerText = '₹' + data.revenue;
+        document.getElementById('reward').innerText = data.reward;
+        document.getElementById('bookings').innerText = data.bookings;
+        document.getElementById('inventory').innerText = data.inventory;
+        document.getElementById('simResult').style.display = 'block';
+    });
+}
+</script>
+{% endblock %}
