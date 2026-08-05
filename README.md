@@ -170,11 +170,7 @@ results/evaluation_results.csv
 
 ---
 
-# Team Members
 
-* **Archana** – RL Evaluation, Analytics, Integration & Testing
-* **Ajay** – Model Comparison & Reinforcement Learning Verification
-* **Abhay** – Flask Backend, Dashboard Development & Frontend Integration
 
 ---
 
